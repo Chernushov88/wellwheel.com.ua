@@ -155,7 +155,7 @@ const getJsPath = async () => {
 gulp.task("minifyhtml", function () {
   return gulp
     .src(["./src/*.html"])
-    .pipe(htmlmin({ collapseWhitespace: true }))
+    //.pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(
       htmlreplace({
         css: hashedCSS ? hashedCSS : getCssPath(),

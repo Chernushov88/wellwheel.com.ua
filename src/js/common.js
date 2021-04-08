@@ -321,7 +321,33 @@ document.addEventListener("DOMContentLoaded", () => {
         $(".header").removeClass("fixed-on");
       }
     });
+
+
+
+    $('#closeIframeModal').click(() => {
+      stopFrame()
+    })
+    $('.modal').click(() => {
+      stopFrame()
+    })
+    $(".cars-batton").click( () => {
+      playFrame()
+    })
+
   });
+
+  var dataIframe = $(".cars-batton").attr("data-iframe");
+  console.log('dataIframe', dataIframe)
+  const playFrame = e =>{
+    setTimeout(() =>{
+      $("#video")[0].src = `${dataIframe}?autoplay=1`;
+    }, 0)
+  }
+  const stopFrame = e =>{
+    setTimeout(() =>{
+      $("#video")[0].src = `${dataIframe}?autoplay=0`;
+    }, 0)
+  }
 
   const radioElements = document.querySelectorAll("[data-type]");
 
@@ -370,4 +396,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+
 });
