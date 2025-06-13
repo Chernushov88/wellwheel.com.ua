@@ -322,21 +322,33 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-
+		function stopFrame() {
+			$("#video").attr("src", "");
+		}
+	
+		function playFrame() {
+			const iframeUrl = $(".start-video").data("iframe");
+			const autoplayUrl = iframeUrl.includes("?")
+				? `${iframeUrl}&autoplay=1`
+				: `${iframeUrl}?autoplay=1`;
+			$("#video").attr("src", autoplayUrl);
+		}
 
     $('#closeIframeModal').click(() => {
       stopFrame()
     })
-    $('.modal').click(() => {
-      stopFrame()
-    })
-    $(".cars-batton").click( () => {
+    $('.modal').on("click", function (e) {
+			if ($(e.target).hasClass("modal")) {
+				stopFrame();
+			}
+		});
+    $(".start-video").click( () => {
       playFrame()
     })
 
   });
 
-  var dataIframe = $(".cars-batton").attr("data-iframe");
+  var dataIframe = $(".start-video").attr("data-iframe");
   console.log('dataIframe', dataIframe)
   const playFrame = e =>{
     setTimeout(() =>{
@@ -396,6 +408,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+
+	const lazyMaps = document.querySelectorAll("iframe.lazy-map");
+	const observer = new IntersectionObserver((entries, obs) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				const iframe = entry.target;
+				iframe.src = iframe.dataset.src;
+				iframe.classList.remove("lazy-map");
+				obs.unobserve(iframe);
+			}
+		});
+	});
+	lazyMaps.forEach(iframe => observer.observe(iframe));
 
 
 });

@@ -136,6 +136,7 @@ p {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+	margin-bottom: 30px;
   &-item {
     &:first-child {
       width: 28%;
@@ -301,7 +302,7 @@ p {
 
 h1 {
   font-weight: bold;
-  font-size: 90px;
+  font-size: 56px;
   line-height: 1;
   color: #3f4559;
   @media (max-width: 570px) {
@@ -340,6 +341,7 @@ h1 {
 }
 
 .description {
+	margin-bottom: 10px;
   font-size: 30px;
   line-height: 36px;
   color: #3f4559;

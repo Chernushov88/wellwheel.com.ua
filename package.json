@@ -1,5 +1,5 @@
 {
-    "name": "grandsemens",
+    "name": "wellwheel",
     "version": "1.0.0",
     "description": "",
     "main": "gulpfile.js",
@@ -82,6 +82,6 @@
         "build": "gulp build",
         "deploy": "gulp deploy"
     },
-    "author": "zavada.dmitry",
+    "author": "Serhii.Chernyshov",
     "license": "ISC"
 }
